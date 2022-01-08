@@ -106,6 +106,7 @@ class App extends React.Component {
   }
 
   render() {
+    // const { value } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
