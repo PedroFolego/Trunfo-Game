@@ -9,7 +9,7 @@ class Form extends React.Component {
 
   render() {
 
-    const { value: {cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled }, onInputChange, onSaveButtonClick } = this.props;
+    const { value: {cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo }, isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
@@ -21,15 +21,15 @@ class Form extends React.Component {
           <textarea type="text" name="cardDescription" value={cardDescription} onChange={onInputChange} data-testid="description-input" />
         </label>
         <label>
-          Atributo1:
+          Atributo 1:
           <input type="number" name="cardAttr1" value={cardAttr1} onChange={onInputChange} data-testid="attr1-input" />
         </label>
         <label>
-          Atributo2:
+          Atributo 2:
           <input type="number" name="cardAttr2" value={cardAttr2} onChange={onInputChange} data-testid="attr2-input" />
         </label>
         <label>
-          Atributo3:
+          Atributo 3:
           <input type="number" name="cardAttr3" value={cardAttr3} onChange={onInputChange} data-testid="attr3-input" />
         </label>
         <label>
@@ -49,7 +49,6 @@ class Form extends React.Component {
           <input type="checkbox" name="cardTrunfo" value={cardTrunfo} onChange={onInputChange} data-testid="trunfo-input" />
         </label>
         <label>
-
           <button
             type="submit"
             onClick={onSaveButtonClick}
