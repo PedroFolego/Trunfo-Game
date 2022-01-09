@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Card extends React.Component {
   render() {
     const {
-      value : {
+      value: {
         cardName,
         cardDescription,
         cardAttr1,
@@ -13,7 +13,7 @@ class Card extends React.Component {
         cardImage,
         cardRare,
         cardTrunfo,
-      }
+      },
     } = this.props;
 
     return (
@@ -52,13 +52,14 @@ class Card extends React.Component {
 export default Card;
 
 Card.propTypes = {
-  value: PropTypes.exact({
+  value: PropTypes.shape({
     cardName: PropTypes.string,
-  cardDescription: PropTypes.string,
-  cardAttr1: PropTypes.string,
-  cardAttr2: PropTypes.string,
-  cardAttr3: PropTypes.string,
-  cardImage: PropTypes.string,
-  cardRare: PropTypes.string,
-  cardTrunfo: PropTypes.bool,})
-}
+    cardDescription: PropTypes.string,
+    cardAttr1: PropTypes.string,
+    cardAttr2: PropTypes.string,
+    cardAttr3: PropTypes.string,
+    cardImage: PropTypes.string,
+    cardRare: PropTypes.string,
+    cardTrunfo: PropTypes.bool,
+  }).isRequired,
+};
