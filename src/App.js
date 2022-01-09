@@ -84,7 +84,7 @@ class App extends React.Component {
       cardAttr3,
     } = this.state;
 
-    if (
+    const validation = (
       cardName !== ''
       && cardDescription !== ''
       && cardImage !== ''
@@ -95,29 +95,49 @@ class App extends React.Component {
       && cardAttr3 <= maxNumberAttr
       && cardAttr3 >= 0
       && Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= sumMaxAttr
-    ) {
-      // this.isSaveButtonDisabled = false;
-      this.setState({
-        isSaveButtonDisabled: false,
-      });
-    } else {
-      // this.isSaveButtonDisabled = true;
-      this.setState({ isSaveButtonDisabled: true });
-    }
+    );
+    // this.isSaveButtonDisabled = false;
+    this.setState({ isSaveButtonDisabled: !validation });
   }
 
   render() {
-    const { isSaveButtonDisabled } = this.state;
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardTrunfo,
+      cardRare,
+      isSaveButtonDisabled,
+    } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
-          value={ this.state }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardImage={ cardImage }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardTrunfo={ cardTrunfo }
+          cardRare={ cardRare }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
-        <Card value={ this.state } />
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardImage={ cardImage }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardTrunfo={ cardTrunfo }
+          cardRare={ cardRare }
+        />
       </div>
     );
   }

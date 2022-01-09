@@ -39,9 +39,9 @@ describe("4 - Crie o preview da carta que está sendo criada pelo formulário", 
   it("Será validado se é renderizado no preview da carta o valor digitado no input referente ao atributo 3 no formulário", () => {
     render(<App />);
     const attr3Input = screen.getByTestId(/attr3-input/i);
-    userEvent.type(attr3Input, '90');
+    userEvent.type(attr3Input, '30');
     const attr3Preview = screen.getByTestId(/attr3-card/i)
-    expect(attr3Preview).toHaveTextContent('90')
+    expect(attr3Preview).toHaveTextContent('30')
   });
 
   it("Será validado se é renderizado no preview da carta o `data-testid='trunfo-card'` se o checkbox Super Trunfo for selecionado", () => {

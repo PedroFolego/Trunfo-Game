@@ -8,18 +8,16 @@ class Form extends React.Component {
 
   render() {
     const {
-      value: {
-        cardName,
-        cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardImage,
-        cardRare,
-        cardTrunfo,
-        // hasTrunfo,
-        // isSaveButtonDisabled,
-      },
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      // hasTrunfo,
+      // isSaveButtonDisabled,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -49,10 +47,10 @@ class Form extends React.Component {
             data-testid="description-input"
           />
         </label>
-        <label htmlFor="cardAttr3">
+        <label htmlFor="cardAttr1">
           Atributo 1:
           <input
-            id="cardAttr3"
+            id="cardAttr1"
             type="number"
             name="cardAttr1"
             value={ cardAttr1 }
@@ -132,17 +130,15 @@ class Form extends React.Component {
 export default Form;
 
 Form.propTypes = {
-  value: PropTypes.shape({
-    cardName: PropTypes.string,
-    cardDescription: PropTypes.string,
-    cardAttr1: PropTypes.string,
-    cardAttr2: PropTypes.string,
-    cardAttr3: PropTypes.string,
-    cardImage: PropTypes.string,
-    cardRare: PropTypes.string,
-    cardTrunfo: PropTypes.bool,
-    // hasTrunfo: PropTypes.bool.isRequired,
-  }).isRequired,
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
