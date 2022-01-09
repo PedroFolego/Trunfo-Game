@@ -18,11 +18,13 @@ class Form extends React.Component {
         cardRare,
         cardTrunfo,
         // hasTrunfo,
+        // isSaveButtonDisabled,
       },
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+    // console.log(isSaveButtonDisabled);
     return (
       <form onSubmit={ this.handleSubmit } id="form">
         <label htmlFor="cardName">
@@ -108,13 +110,12 @@ class Form extends React.Component {
             id="cardTrunfo"
             type="checkbox"
             name="cardTrunfo"
-            value={ cardTrunfo }
+            checked={ cardTrunfo }
             onChange={ onInputChange }
             data-testid="trunfo-input"
           />
         </label>
         <button
-          id="btnSubmit"
           type="submit"
           onClick={ onSaveButtonClick }
           disabled={ isSaveButtonDisabled }
@@ -122,6 +123,7 @@ class Form extends React.Component {
         >
           Salvar
         </button>
+        {/* {console.log(document.getElementById('button'))} */}
       </form>
     );
   }
@@ -139,7 +141,7 @@ Form.propTypes = {
     cardImage: PropTypes.string,
     cardRare: PropTypes.string,
     cardTrunfo: PropTypes.bool,
-    // hasTrunfo: PropTypes.bool,
+    // hasTrunfo: PropTypes.bool.isRequired,
   }).isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,

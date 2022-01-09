@@ -19,8 +19,7 @@ class Card extends React.Component {
     return (
       <div>
         <h2 data-testid="name-card">
-          Nome
-          {cardName}
+          { cardName }
         </h2>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">
@@ -36,14 +35,13 @@ class Card extends React.Component {
           { cardAttr2 }
         </p>
         <p data-testid="attr3-card">
-          Atributo 3
           { cardAttr3 }
         </p>
         <p data-testid="rare-card">
           Raridade
           { cardRare }
         </p>
-        <p data-testid="trunfo-card">{cardTrunfo ? 'Super Trunfo' : ''}</p>
+        {cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : ''}
       </div>
     );
   }
