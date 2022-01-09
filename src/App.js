@@ -73,7 +73,7 @@ class App extends React.Component {
 
   btnEnable() {
     const maxNumberAttr = 90;
-    const sumMaxAttr = 230;
+    const sumMaxAttr = 210;
 
     const {
       cardName,
@@ -96,6 +96,7 @@ class App extends React.Component {
       && cardAttr3 >= 0
       && Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= sumMaxAttr
     );
+    console.log(Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3));
     // this.isSaveButtonDisabled = false;
     this.setState({ isSaveButtonDisabled: !validation });
   }
