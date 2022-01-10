@@ -24,6 +24,7 @@ class App extends React.Component {
     this.btnEnable = this.btnEnable.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.hasTrunfoCard = this.hasTrunfoCard.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   onInputChange({ target }) {
@@ -76,6 +77,16 @@ class App extends React.Component {
     this.setState({ hasTrunfo: arrCards.some((card) => card.cardTrunfo) });
   }
 
+  deleteCard = (selectCard) => {
+    const { arrCards } = this.state;
+    const filter = arrCards.filter((card) => card.cardName !== selectCard.cardName)
+    this.setState({
+      arrCards: [...filter],
+      hasTrunfo: filter.some(card => card.cardTrunfo)
+    });
+    
+  }
+  // https://stackoverflow.com/questions/48077103/remove-item-from-array-in-react
   btnEnable() {
     const maxNumberAttr = 90;
     const sumMaxAttr = 210;
@@ -145,7 +156,8 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           cardRare={ cardRare }
         />
-        {arrCards.map((card) => (
+        {arrCards.map((card, index) => (
+          <>
           <Card
             key={ card.cardName }
             cardName={ card.cardName }
@@ -157,6 +169,14 @@ class App extends React.Component {
             cardTrunfo={ card.cardTrunfo }
             cardRare={ card.cardRare }
           />
+          <button
+            id="deleteCard"
+            data-testid="delete-button"
+            onClick={() => this.deleteCard(card)}
+          >
+            Excluir
+          </button>
+          </>
         ))}
       </div>
     );
