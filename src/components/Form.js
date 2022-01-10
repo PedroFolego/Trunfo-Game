@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Form.css';
+// import './Form.css';
 
 class Form extends React.Component {
   handleSubmit = (e) => {
@@ -120,9 +120,9 @@ class Form extends React.Component {
             onChange={ onInputChange }
             data-testid="rare-input"
           >
-            <option>Normal</option>
-            <option>Raro</option>
-            <option>Muito Raro</option>
+            <option>normal</option>
+            <option>raro</option>
+            <option>muito raro</option>
           </select>
         </label>
         <label htmlFor="cardTrunfo" id="label-trunfo">
