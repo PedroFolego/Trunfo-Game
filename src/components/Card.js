@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Card.css';
 
 class Card extends React.Component {
-  
   render() {
     const {
       cardName,
@@ -16,33 +16,49 @@ class Card extends React.Component {
     } = this.props;
 
     return (
-      <div id={cardName}>
-        <h2 data-testid="name-card">
-          { cardName }
-        </h2>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <p data-testid="description-card">
-          Descrição
-          { cardDescription }
-        </p>
-        <p data-testid="attr1-card">
-          Atributo 1
-          { cardAttr1 }
-        </p>
-        <p data-testid="attr2-card">
-          Atributo 2
-          { cardAttr2 }
-        </p>
-        <p data-testid="attr3-card">
-          Atributo 3
-          { cardAttr3 }
-        </p>
-        <p data-testid="rare-card">
-          Raridade
-          { cardRare }
-        </p>
-        {cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : ''}
-
+      <div className="card">
+        <div className="card-image">
+          <img
+            src={ cardImage }
+            alt={ cardName }
+            className="img-card"
+            data-testid="image-card"
+          />
+        </div>
+        <div className="card-text">
+          <span data-testid="rare-card">
+            { cardRare }
+          </span>
+          <h2 data-testid="name-card">
+            { cardName }
+          </h2>
+          <p data-testid="description-card">
+            { cardDescription }
+          </p>
+        </div>
+        <div className="card-stats">
+          <div className="stat">
+            <div data-testid="attr1-card" className="value">
+              { cardAttr1 }
+            </div>
+            <div className="type">Att1</div>
+          </div>
+          <div className="stat border">
+            <div data-testid="attr2-card" className="value">
+              { cardAttr2 }
+            </div>
+            <div className="type">Att2</div>
+          </div>
+          <div className="stat">
+            <div data-testid="attr3-card" className="value">
+              { cardAttr3 }
+            </div>
+            <div className="type">Att3</div>
+          </div>
+        </div>
+        {cardTrunfo
+          ? <div data-testid="trunfo-card" className="cardTrunfo">Super Trunfo</div>
+          : ''}
       </div>
     );
   }

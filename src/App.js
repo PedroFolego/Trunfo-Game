@@ -1,11 +1,11 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
     super();
-    // this.isSaveButtonDisabled = true;
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -13,7 +13,7 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: 'normal',
+      cardRare: 'Normal',
       cardTrunfo: false,
       arrCards: [],
       isSaveButtonDisabled: true,
@@ -66,27 +66,27 @@ class App extends React.Component {
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
-      cardRare: 'normal',
+      cardRare: 'Normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
     }), () => this.hasTrunfoCard());
   }
+
+  deleteCard = (selectCard) => {
+    const { arrCards } = this.state;
+    const filter = arrCards.filter((card) => card.cardName !== selectCard.cardName);
+    this.setState({
+      arrCards: [...filter],
+      hasTrunfo: filter.some((card) => card.cardTrunfo),
+    });
+  }
+  // https://stackoverflow.com/questions/48077103/remove-item-from-array-in-react
 
   hasTrunfoCard() {
     const { arrCards } = this.state;
     this.setState({ hasTrunfo: arrCards.some((card) => card.cardTrunfo) });
   }
 
-  deleteCard = (selectCard) => {
-    const { arrCards } = this.state;
-    const filter = arrCards.filter((card) => card.cardName !== selectCard.cardName)
-    this.setState({
-      arrCards: [...filter],
-      hasTrunfo: filter.some(card => card.cardTrunfo)
-    });
-    
-  }
-  // https://stackoverflow.com/questions/48077103/remove-item-from-array-in-react
   btnEnable() {
     const maxNumberAttr = 90;
     const sumMaxAttr = 210;
@@ -129,55 +129,61 @@ class App extends React.Component {
       isSaveButtonDisabled,
       arrCards,
     } = this.state;
+
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardImage={ cardImage }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardTrunfo={ cardTrunfo }
-          cardRare={ cardRare }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardImage={ cardImage }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardTrunfo={ cardTrunfo }
-          cardRare={ cardRare }
-        />
-        {arrCards.map((card, index) => (
-          <>
-          <Card
-            key={ card.cardName }
-            cardName={ card.cardName }
-            cardDescription={ card.cardDescription }
-            cardImage={ card.cardImage }
-            cardAttr1={ card.cardAttr1 }
-            cardAttr2={ card.cardAttr2 }
-            cardAttr3={ card.cardAttr3 }
-            cardTrunfo={ card.cardTrunfo }
-            cardRare={ card.cardRare }
+      <div className="trunfo-game">
+        <section className="create-card">
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardImage={ cardImage }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardTrunfo={ cardTrunfo }
+            cardRare={ cardRare }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
           />
-          <button
-            id="deleteCard"
-            data-testid="delete-button"
-            onClick={() => this.deleteCard(card)}
-          >
-            Excluir
-          </button>
-          </>
-        ))}
+          <div className="preview-card">
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardImage={ cardImage }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardTrunfo={ cardTrunfo }
+              cardRare={ cardRare }
+            />
+          </div>
+        </section>
+        <section className="section-cards">
+          {arrCards.map((card) => (
+            <div className="card-button" key={ card.cardName }>
+              <Card
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardImage={ card.cardImage }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardTrunfo={ card.cardTrunfo }
+                cardRare={ card.cardRare }
+              />
+              <button
+                type="button"
+                className="deleteCard"
+                data-testid="delete-button"
+                onClick={ () => this.deleteCard(card) }
+              >
+                Excluir
+              </button>
+            </div>
+          ))}
+        </section>
       </div>
     );
   }

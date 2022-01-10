@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Form.css';
 
 class Form extends React.Component {
   handleSubmit = (e) => {
@@ -21,22 +22,27 @@ class Form extends React.Component {
       onInputChange,
       onSaveButtonClick,
     } = this.props;
-    // console.log(isSaveButtonDisabled);
+
     const inputTrunfo = (
-      <input
-        id="cardTrunfo"
-        type="checkbox"
-        name="cardTrunfo"
-        checked={ cardTrunfo }
-        onChange={ onInputChange }
-        data-testid="trunfo-input"
-      />);
+      <>
+        Carta Trunfo:
+        <input
+          id="cardTrunfo"
+          type="checkbox"
+          name="cardTrunfo"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+          data-testid="trunfo-input"
+        />
+      </>);
 
     return (
-      <form onSubmit={ this.handleSubmit } id="form">
+      <form onSubmit={ this.handleSubmit } className="form">
+        <h1 className="title">Crie sua carta</h1>
         <label htmlFor="cardName">
-          Nome:
+          Nome
           <input
+            className="input"
             id="cardName"
             type="text"
             name="cardName"
@@ -46,8 +52,9 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="cardDescription">
-          Descrição:
+          Descrição
           <textarea
+            className="input"
             id="cardDescription"
             type="text"
             name="cardDescription"
@@ -57,8 +64,9 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="cardAttr1">
-          Atributo 1:
+          Atributo 1
           <input
+            className="input"
             id="cardAttr1"
             type="number"
             name="cardAttr1"
@@ -68,8 +76,9 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="cardAttr2">
-          Atributo 2:
+          Atributo 2
           <input
+            className="input"
             id="cardAttr2"
             type="number"
             name="cardAttr2"
@@ -79,8 +88,9 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="cardAttr3">
-          Atributo 3:
+          Atributo 3
           <input
+            className="input"
             id="cardAttr3"
             type="number"
             name="cardAttr3"
@@ -90,8 +100,9 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="cardImage">
-          Imagem:
+          Imagem
           <input
+            className="input"
             id="cardImage"
             type="text"
             name="cardImage"
@@ -100,20 +111,22 @@ class Form extends React.Component {
             data-testid="image-input"
           />
         </label>
-        <select
-          name="cardRare"
-          value={ cardRare }
-          onChange={ onInputChange }
-          data-testid="rare-input"
-        >
-          Raridade:
-          <option>normal</option>
-          <option>raro</option>
-          <option>muito raro</option>
-        </select>
-        <label htmlFor="cardTrunfo">
-          Carta Trunfo:
-          { hasTrunfo ? 'Você já tem um Super Trunfo em seu baralho' : inputTrunfo }
+        <label htmlFor="select">
+          Raridade
+          <select
+            id="select"
+            name="cardRare"
+            value={ cardRare }
+            onChange={ onInputChange }
+            data-testid="rare-input"
+          >
+            <option>Normal</option>
+            <option>Raro</option>
+            <option>Muito Raro</option>
+          </select>
+        </label>
+        <label htmlFor="cardTrunfo" id="label-trunfo">
+          { hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : inputTrunfo }
         </label>
         <button
           type="submit"

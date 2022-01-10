@@ -1,0 +1,43 @@
+body {
+  background-color: #EEE5E9;
+}
+
+.trunfo-game {
+
+}
+
+.create-card {
+  display: flex;
+  margin: 30px;
+}
+
+.preview-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid black
+}
+
+.section-cards {
+  display: flex;
+  margin-top: 20px;
+  border-top: 2px solid black;
+}
+
+.card-button {
+  margin: 15px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.card-button .deleteCard{
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-weight: 700;
+}
