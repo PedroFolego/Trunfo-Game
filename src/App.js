@@ -28,7 +28,6 @@ class App extends React.Component {
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.hasTrunfoCard = this.hasTrunfoCard.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
-    this.filterCards = this.filterCards.bind(this);
   }
 
   onInputChange({ target }) {
@@ -107,8 +106,13 @@ class App extends React.Component {
     const validateAtt1 = (cardAttr1 <= maxNumberAttr && cardAttr1 >= 0);
     const validateAtt2 = (cardAttr2 <= maxNumberAttr && cardAttr2 >= 0);
     const validateAtt3 = (cardAttr3 <= maxNumberAttr && cardAttr3 >= 0);
-    const validateSumAtt = (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= sumMaxAttr);
-    
+    const validateSumAtt = (
+      Number(cardAttr1)
+      + Number(cardAttr2)
+      + Number(cardAttr3)
+      <= sumMaxAttr
+    );
+
     const validation = (
       cardName !== ''
       && cardDescription !== ''
@@ -121,14 +125,8 @@ class App extends React.Component {
     this.setState({ isSaveButtonDisabled: !validation });
   }
 
-  filterCards({target}) {
-    const { arrCards } = this.state;
-    if (target.value !== '') return arrCards
-      
-  }
-
   render() {
-  const {
+    const {
       cardName,
       cardDescription,
       cardImage,
@@ -144,7 +142,6 @@ class App extends React.Component {
       filterRare,
       filterTrunfo,
     } = this.state;
-    
 
     return (
       <div className="trunfo-game">
@@ -164,7 +161,7 @@ class App extends React.Component {
             onSaveButtonClick={ this.onSaveButtonClick }
           />
           <div className="preview-card">
-          <h2>Preview</h2>
+            <h2>Preview</h2>
             <Card
               cardName={ cardName }
               cardDescription={ cardDescription }
@@ -203,11 +200,10 @@ class App extends React.Component {
             data-testid="trunfo-filter"
             name="filterTrunfo"
             value={ filterTrunfo }
-            onCLick={ this.onInputChange}
+            onClick={ this.onInputChange }
           />
           {arrCards
-            .filter((card) => 
-              card.cardName.includes(wordFilter)
+            .filter((card) => card.cardName.includes(wordFilter)
               && (card.cardRare === filterRare || filterRare === 'todas'))
             .map((card) => (
               <div className="card-button" key={ card.cardName }>
@@ -230,7 +226,7 @@ class App extends React.Component {
                   Excluir
                 </button>
               </div>
-          ))}
+            ))}
         </section>
       </div>
     );
