@@ -4,9 +4,9 @@
   display: flex;
   flex-flow: column nowrap;
   margin: 5px;
-  max-width: 500px;
-  padding: 10px;
-  width: 100%;
+  min-width: 500px;
+  padding: 18px;
+  border-radius: 20px;
 }
 
 .form .title {
@@ -52,6 +52,7 @@ form .label-trunfo {
   display: flex;
   flex-flow: row;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .form button {
