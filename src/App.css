@@ -1,9 +1,5 @@
 body {
-  background-color: #EEE5E9;
-}
-
-.trunfo-game {
-
+  background-color: #eee5e9;
 }
 
 .create-card {
@@ -12,32 +8,31 @@ body {
 }
 
 .preview-card {
-  display: flex;
   align-items: center;
+  border: 1px solid black;
+  display: flex;
   justify-content: center;
   margin: 5px;
   max-width: 500px;
   width: 100%;
-  border: 1px solid black
 }
 
 .section-cards {
+  border-top: 2px solid black;
   display: flex;
   margin-top: 20px;
-  border-top: 2px solid black;
 }
 
 .card-button {
-  margin: 15px;
+  align-items: center;
   display: flex;
   flex-flow: column;
   justify-content: center;
-  align-items: center;
-
+  margin: 15px;
 }
 
-.card-button .deleteCard{
+.card-button .deleteCard {
+  font-weight: 700;
   margin-top: 10px;
   padding: 5px 10px;
-  font-weight: 700;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './Form.css';
+import './Form.css';
 
 class Form extends React.Component {
   handleSubmit = (e) => {
@@ -39,7 +39,7 @@ class Form extends React.Component {
     return (
       <form onSubmit={ this.handleSubmit } className="form">
         <h1 className="title">Crie sua carta</h1>
-        <label htmlFor="cardName">
+        <label htmlFor="cardName" className="label">
           Nome
           <input
             className="input"
@@ -51,7 +51,7 @@ class Form extends React.Component {
             data-testid="name-input"
           />
         </label>
-        <label htmlFor="cardDescription">
+        <label htmlFor="cardDescription" className="label">
           Descrição
           <textarea
             className="input"
@@ -63,7 +63,7 @@ class Form extends React.Component {
             data-testid="description-input"
           />
         </label>
-        <label htmlFor="cardAttr1">
+        <label htmlFor="cardAttr1" className="label">
           Atributo 1
           <input
             className="input"
@@ -75,7 +75,7 @@ class Form extends React.Component {
             data-testid="attr1-input"
           />
         </label>
-        <label htmlFor="cardAttr2">
+        <label htmlFor="cardAttr2" className="label">
           Atributo 2
           <input
             className="input"
@@ -87,7 +87,7 @@ class Form extends React.Component {
             data-testid="attr2-input"
           />
         </label>
-        <label htmlFor="cardAttr3">
+        <label htmlFor="cardAttr3" className="label">
           Atributo 3
           <input
             className="input"
@@ -99,7 +99,7 @@ class Form extends React.Component {
             data-testid="attr3-input"
           />
         </label>
-        <label htmlFor="cardImage">
+        <label htmlFor="cardImage" className="label">
           Imagem
           <input
             className="input"
@@ -111,7 +111,7 @@ class Form extends React.Component {
             data-testid="image-input"
           />
         </label>
-        <label htmlFor="select">
+        <label htmlFor="select" className="label">
           Raridade
           <select
             id="select"
@@ -125,7 +125,7 @@ class Form extends React.Component {
             <option>muito raro</option>
           </select>
         </label>
-        <label htmlFor="cardTrunfo" id="label-trunfo">
+        <label htmlFor="cardTrunfo" className="label-trunfo">
           { hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : inputTrunfo }
         </label>
         <button

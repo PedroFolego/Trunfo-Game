@@ -1,67 +1,66 @@
 .form {
-  margin: 5px;
-  background-color: #D8D2E1;
+  background-color: #d8d2e1;
+  box-shadow: 1px 1px 2px black;
   display: flex;
   flex-flow: column nowrap;
+  margin: 5px;
   max-width: 500px;
-  width: 100%;
   padding: 10px;
-  box-shadow: 1px 1px 2px rgba(0,0,0,1);
+  width: 100%;
 }
+
 .form .title {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 25px;
-  text-transform: uppercase;
   text-align: center;
-
+  text-transform: uppercase;
 }
 
-.form label {
+.form .label {
   display: flex;
   flex-flow: column;
-  margin-bottom: 15px;
   justify-content: center;
+  margin-bottom: 15px;
 }
-.form label .input {
+
+.form .label .input {
   border: 1px solid #d5dbd9;
+  border-radius: 3px;
   font-size: 15px;
   padding: 8px 10px;
-  border-radius: 3px;
   resize: none;
 }
 
 .form .select {
+  height: 37px;
   position: relative;
   width: 100%;
-  height: 37px;
-  
 }
 
 .form select {
-  background-color: hsl(0, 0%, 100%);
-
+  background-color: white;
   border: 1px solid #d5dbd9;
-  font-size: 15px;
-  padding: 8px 10px;
   border-radius: 3px;
+  font-size: 15px;
   outline: none;
+  padding: 8px 10px;
 }
 
-#label-trunfo {
+form .label-trunfo {
+  align-items: center;
   display: flex;
   flex-flow: row;
   justify-content: center;
-  align-items: center;
 }
 
 .form button {
-  width: 100%;
-  padding: 8px 10px;
+  background: #edf1f0;
+  border: 0.5px solid black;
+  border-radius: 3px;
   font-size: 15px;
   font-weight: 700;
-  border: 0.5px solid black;
-  background: #edf1f0;
+  padding: 8px 10px;
   text-transform: uppercase;
-  border-radius: 3px;
+  width: 100%;
 }
