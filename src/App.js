@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import './App.css';
+import Header from './components/Header';
 
 class App extends React.Component {
   constructor() {
@@ -15,7 +16,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      arrCards: [],
+      arrCards: JSON.parse(localStorage.getItem('deck')) || [],
       isSaveButtonDisabled: true,
       hasTrunfo: false,
       wordFilter: '',
@@ -28,6 +29,10 @@ class App extends React.Component {
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.hasTrunfoCard = this.hasTrunfoCard.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
+  }
+
+  componentDidMount() {
+    this.hasTrunfoCard();
   }
 
   onInputChange({ target }) {
@@ -80,14 +85,20 @@ class App extends React.Component {
     const filter = arrCards.filter((card) => card.cardName !== selectCard.cardName);
     this.setState({
       arrCards: [...filter],
-      hasTrunfo: filter.some((card) => card.cardTrunfo),
-    });
+    }, () => this.hasTrunfoCard());
+  }
+
+  addCardToStore() {
+    const { arrCards } = this.state;
+    localStorage.setItem('deck', JSON.stringify(arrCards));
   }
   // https://stackoverflow.com/questions/48077103/remove-item-from-array-in-react
 
   hasTrunfoCard() {
     const { arrCards } = this.state;
-    this.setState({ hasTrunfo: arrCards.some((card) => card.cardTrunfo) });
+    this.setState({
+      hasTrunfo: arrCards.some((card) => card.cardTrunfo),
+    }, this.addCardToStore());
   }
 
   btnEnable() {
@@ -145,6 +156,7 @@ class App extends React.Component {
 
     return (
       <div className="trunfo-game">
+        <Header />
         <section className="create-card">
           <Form
             cardName={ cardName }
