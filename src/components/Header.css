@@ -1,0 +1,11 @@
+.header {
+  background-color: rgb(49, 49, 49);
+  border-radius: 0 0 20px 20px;
+  color: white;
+  font-weight: 900;
+  padding: 20px;
+}
+
+.header span {
+  color: #a980e6;
+}
