@@ -37,8 +37,14 @@ body {
   align-items: center;
   border-top: 2px solid black;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: center;
+}
+
+.filter_cards {
+  display: flex;
+  flex-flow: row;
+  margin-top: 15px;
 }
 
 .card-button {
@@ -58,4 +64,9 @@ body {
 .card:hover {
   box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.6);
   transform: scale(1.2);
+}
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
 }

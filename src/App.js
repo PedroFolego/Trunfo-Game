@@ -21,7 +21,6 @@ class App extends React.Component {
       hasTrunfo: false,
       wordFilter: '',
       filterRare: 'todas',
-      filterTrunfo: false,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -45,14 +44,8 @@ class App extends React.Component {
 
   onSaveButtonClick() {
     const {
-      cardName,
-      cardDescription,
-      cardImage,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardTrunfo,
-      cardRare,
+      cardName, cardDescription, cardImage, cardAttr1,
+      cardAttr2, cardAttr3, cardTrunfo, cardRare,
     } = this.state;
 
     const card = {
@@ -92,7 +85,6 @@ class App extends React.Component {
     const { arrCards } = this.state;
     localStorage.setItem('deck', JSON.stringify(arrCards));
   }
-  // https://stackoverflow.com/questions/48077103/remove-item-from-array-in-react
 
   hasTrunfoCard() {
     const { arrCards } = this.state;
@@ -138,20 +130,9 @@ class App extends React.Component {
 
   render() {
     const {
-      cardName,
-      cardDescription,
-      cardImage,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardTrunfo,
-      hasTrunfo,
-      cardRare,
-      isSaveButtonDisabled,
-      arrCards,
-      wordFilter,
-      filterRare,
-      filterTrunfo,
+      cardName, cardDescription, cardImage, cardAttr1, cardAttr2, cardAttr3,
+      cardTrunfo, hasTrunfo, cardRare, isSaveButtonDisabled,
+      arrCards, wordFilter, filterRare,
     } = this.state;
 
     return (
@@ -187,58 +168,62 @@ class App extends React.Component {
           </div>
         </section>
         <section className="section-cards">
-          <h2>Todas as Cartas</h2>
-
-          <input
-            type="text"
-            data-testid="name-filter"
-            name="wordFilter"
-            value={ wordFilter }
-            onChange={ this.onInputChange }
-          />
-          <select
-            data-testid="rare-filter"
-            name="filterRare"
-            value={ filterRare }
-            onChange={ this.onInputChange }
-          >
-            <option>todas</option>
-            <option>normal</option>
-            <option>raro</option>
-            <option>muito raro</option>
-          </select>
-          <input
-            type="checkbox"
-            data-testid="trunfo-filter"
-            name="filterTrunfo"
-            value={ filterTrunfo }
-            onClick={ this.onInputChange }
-          />
-          {arrCards
-            .filter((card) => card.cardName.includes(wordFilter)
-              && (card.cardRare === filterRare || filterRare === 'todas'))
-            .map((card) => (
-              <div className="card-button" key={ card.cardName }>
-                <Card
-                  cardName={ card.cardName }
-                  cardDescription={ card.cardDescription }
-                  cardImage={ card.cardImage }
-                  cardAttr1={ card.cardAttr1 }
-                  cardAttr2={ card.cardAttr2 }
-                  cardAttr3={ card.cardAttr3 }
-                  cardTrunfo={ card.cardTrunfo }
-                  cardRare={ card.cardRare }
-                />
-                <button
-                  type="button"
-                  className="deleteCard"
-                  data-testid="delete-button"
-                  onClick={ () => this.deleteCard(card) }
-                >
-                  Excluir
-                </button>
-              </div>
-            ))}
+          <nav className="filter_cards">
+            <h2>Todas as Cartas</h2>
+            <label htmlFor="wordFilter">
+              <input
+                id="wordFilter"
+                className="form-control"
+                type="text"
+                data-testid="name-filter"
+                name="wordFilter"
+                value={ wordFilter }
+                onChange={ this.onInputChange }
+              />
+            </label>
+            <label htmlFor="filterRare">
+              <select
+                id="filterRare"
+                className="form-select"
+                data-testid="rare-filter"
+                name="filterRare"
+                value={ filterRare }
+                onChange={ this.onInputChange }
+              >
+                <option>todas</option>
+                <option>normal</option>
+                <option>raro</option>
+                <option>muito raro</option>
+              </select>
+            </label>
+          </nav>
+          <div className="cards">
+            {arrCards
+              .filter((card) => card.cardName.includes(wordFilter)
+                && (card.cardRare === filterRare || filterRare === 'todas'))
+              .map((card) => (
+                <div className="card-button" key={ card.cardName }>
+                  <Card
+                    cardName={ card.cardName }
+                    cardDescription={ card.cardDescription }
+                    cardImage={ card.cardImage }
+                    cardAttr1={ card.cardAttr1 }
+                    cardAttr2={ card.cardAttr2 }
+                    cardAttr3={ card.cardAttr3 }
+                    cardTrunfo={ card.cardTrunfo }
+                    cardRare={ card.cardRare }
+                  />
+                  <button
+                    type="button"
+                    className="btn deleteCard btn-danger"
+                    data-testid="delete-button"
+                    onClick={ () => this.deleteCard(card) }
+                  >
+                    Excluir
+                  </button>
+                </div>
+              ))}
+          </div>
         </section>
       </div>
     );
