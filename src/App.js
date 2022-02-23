@@ -167,36 +167,38 @@ class App extends React.Component {
             />
           </div>
         </section>
+        <nav className="filter_cards">
+          <h2 className="header__all-cards">Todas as Cartas</h2>
+          <label htmlFor="wordFilter">
+            <input
+              id="wordFilter"
+              className="form-control"
+              type="text"
+              placeholder="Digite aqui o nome da carta"
+              data-testid="name-filter"
+              name="wordFilter"
+              value={ wordFilter }
+              onChange={ this.onInputChange }
+            />
+          </label>
+          <label htmlFor="filterRare">
+            <select
+              id="filterRare"
+              className="form-select"
+              data-testid="rare-filter"
+              name="filterRare"
+              value={ filterRare }
+              onChange={ this.onInputChange }
+            >
+              <option>todas</option>
+              <option>normal</option>
+              <option>raro</option>
+              <option>muito raro</option>
+            </select>
+          </label>
+        </nav>
         <section className="section-cards">
-          <nav className="filter_cards">
-            <h2>Todas as Cartas</h2>
-            <label htmlFor="wordFilter">
-              <input
-                id="wordFilter"
-                className="form-control"
-                type="text"
-                data-testid="name-filter"
-                name="wordFilter"
-                value={ wordFilter }
-                onChange={ this.onInputChange }
-              />
-            </label>
-            <label htmlFor="filterRare">
-              <select
-                id="filterRare"
-                className="form-select"
-                data-testid="rare-filter"
-                name="filterRare"
-                value={ filterRare }
-                onChange={ this.onInputChange }
-              >
-                <option>todas</option>
-                <option>normal</option>
-                <option>raro</option>
-                <option>muito raro</option>
-              </select>
-            </label>
-          </nav>
+
           <div className="cards">
             {arrCards
               .filter((card) => card.cardName.includes(wordFilter)

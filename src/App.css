@@ -16,6 +16,10 @@ body {
   margin: 30px;
 }
 
+.header__all-cards {
+  margin-right: 10px;
+}
+
 .preview-card {
   align-items: center;
   display: flex;
